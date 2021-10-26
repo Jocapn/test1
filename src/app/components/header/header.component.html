@@ -1,0 +1,35 @@
+<header>
+    <div class="user">
+        <ng-container *ngIf="isLoggedIn">
+            Welcome {{ user.firstName }} {{ user.lastName }}
+            <button (click)="logout()">Log Out</button>
+            <div class="membership">
+                {{ user.firstName }}
+                {{ user.lastName }}
+                <ng-container *ngIf="user.isMember">
+                    Your membership is active
+                </ng-container>
+                <ng-container *ngIf="!user.isMember">
+                    <button (click)="setMemberToTrue()">Become a member</button>
+                </ng-container>
+            </div>
+        </ng-container>
+        <ng-container *ngIf='!isLoggedIn'>
+            <button (click)="login()">Log In</button>
+        </ng-container>
+    </div>
+    
+    <div class="menu">
+        <ul>
+            <li>
+                <a [routerLink]="['home']">Home</a>
+            </li>
+            <li>
+                <a [routerLink]="['todo']">To do list</a>
+            </li>
+            <li>
+                <a [routerLink]="['user']">User account</a>
+            </li>
+        </ul>
+    </div>
+</header>

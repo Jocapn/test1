@@ -1,0 +1,12 @@
+<form>
+    <div class="form-input">
+        <label for="firstName">Prvo ime</label>
+        <input type="text" name="firstName" [(ngModel)]="userData.firstName" />
+    </div>
+
+    <div class="form-input">
+        <label for="lastName">Drugo ime</label>
+        <input type="text" name="lastName" [(ngModel)]="userData.lastName" />
+    </div>
+    <button (click)=save()>Snimi</button>
+</form>

@@ -1,0 +1,34 @@
+
+<ng-container *ngIf="currentLocation === '/home'">
+  <table>
+    <tr class="todo" *ngFor="let item of fiveTodos">
+      <td>
+        {{ item.title }}
+      </td>
+      <td>
+        {{ item.desc }}
+      </td>
+      <td>
+        {{ item.date }}
+      </td>
+    </tr>
+  </table>
+  
+</ng-container>
+<ng-container *ngIf="currentLocation !== '/home'">
+  <table>
+    <tr class="todo" *ngFor="let item of todoItems">
+      <td>
+        {{ item.title }}
+      </td>
+      <td>
+        {{ item.desc }}
+      </td>
+      <td>
+        {{ item.date }}
+      </td>
+    </tr>
+  </table>
+  
+</ng-container>
+
