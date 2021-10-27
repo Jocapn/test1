@@ -5,29 +5,32 @@ import { ITodo, TodoService } from 'src/app/services/todo.service';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss']
+  styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent implements OnInit {
+  public todos: ITodo[] = [];
+  public fiveTodos: ITodo[] = [];
 
- public todos: ITodo[] = [];
- public fiveTodos: ITodo[] = [];
+  constructor(private todoService: TodoService) {}
 
-  constructor(private todoService: TodoService) { }
-
+  totalLenght: any;
+  page: number = 1;
+  
   ngOnInit(): void {
     this.getTodos();
   }
 
   getTodos(): void {
     const sub: Subscription = this.todoService.getTodo().subscribe(
-      todoResult => {
+      (todoResult) => {
         console.log(todoResult);
         this.todos = todoResult;
-        for(let i = 0; i <= 4; i++) {
+        this.totalLenght = todoResult.length;
+        for (let i = 0; i <= 4; i++) {
           this.fiveTodos[i] = this.todos[i];
         }
       },
-      err => {
+      (err) => {
         console.log(err);
       },
       () => {

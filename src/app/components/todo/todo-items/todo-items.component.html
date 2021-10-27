@@ -17,7 +17,7 @@
 </ng-container>
 <ng-container *ngIf="currentLocation !== '/home'">
   <table>
-    <tr class="todo" *ngFor="let item of todoItems">
+    <tr class="todo" *ngFor="let item of todoItems | paginate: { itemsPerPage: 10, currentPage: page }">
       <td>
         {{ item.title }}
       </td>
@@ -29,6 +29,9 @@
       </td>
     </tr>
   </table>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+  
   
 </ng-container>
 
